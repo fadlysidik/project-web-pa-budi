@@ -130,48 +130,58 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- Form Pemasukan -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Form Pemasukan</h3>
-            </div>
-            <form action="{{ route('proses-pemasukan') }}" method="post">
-              @csrf
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="tanggal">Tanggal</label>
-                  <input type="date" id="tanggal" name="tanggal" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="nama_mahasiswa">Nama Mahasiswa</label>
-                  <input type="text" id="nama_mahasiswa" name="nama_mahasiswa" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="jumlah_uang">Jumlah Uang</label>
-                  <input type="number" step="0.01" id="jumlah_uang" name="jumlah_uang" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="peruntukan">Peruntukan</label>
-                  <input type="text" id="peruntukan" name="peruntukan" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="semester">Semester</label>
-                  <input type="number" id="semester" name="semester" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="angkatan">Angkatan</label>
-                  <input type="number" id="angkatan" name="angkatan" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="cara_bayar">Cara Bayar</label>
-                  <input type="text" id="cara_bayar" name="cara_bayar" class="form-control" required>
-                </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+         <!-- Form Pemasukan -->
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Form Pemasukan</h3>
+  </div>
+  <form action="{{ route('proses-pemasukan') }}" method="post">
+    @csrf
+    <div class="card-body">
+      <div class="row">
+        <!-- Kolom Kiri -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" id="tanggal" name="tanggal" class="form-control" required>
           </div>
+          <div class="form-group">
+            <label for="nama_mahasiswa">Nama Mahasiswa</label>
+            <input type="text" id="nama_mahasiswa" name="nama_mahasiswa" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="jumlah_uang">Jumlah Uang</label>
+            <input type="number" step="0.01" id="jumlah_uang" name="jumlah_uang" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="peruntukan">Peruntukan</label>
+            <input type="text" id="peruntukan" name="peruntukan" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="semester">Semester</label>
+            <input type="number" id="semester" name="semester" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="angkatan">Angkatan</label>
+            <input type="number" id="angkatan" name="angkatan" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="cara_bayar">Cara Bayar</label>
+            <input type="text" id="cara_bayar" name="cara_bayar" class="form-control" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
 
           <!-- History Pembayaran -->
           <div class="card">
@@ -193,7 +203,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($pembayaran as $index => $item)
+                  @foreach ($pemasukan as $index => $item)
                   <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $item->tanggal }}</td>

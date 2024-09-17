@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CampusFunds | Print Kwitansi Pemasukan</title>
+  <title>CampusFunds | Print Kwitansi Pengeluaran</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -24,9 +24,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('home.index') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
   </nav>
@@ -156,46 +153,56 @@
         <!-- Form Kwitansi -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Form Print Kwitansi</h3>
+            <h3 class="card-title">Form Print Kwitansi pengeluaran</h3>
           </div>
-          <form action="{{ route('kwitansi-pengeluaran.store') }}" method="post">
-        @csrf
-        <div class="form-group">
-            <label for="nomor">Nomor</label>
-            <input type="text" id="nomor" name="nomor" class="form-control" required>
+          <form action="{{ route('proses-pengeluaran') }}" method="post">
+    @csrf
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nomor">Nomor</label>
+                <input type="number" id="nomor" name="nomor" class="form-control form-control-sm" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dikeluarkan_kepada">Dikeluarkan Kepada</label>
+                <input type="text" id="dikeluarkan_kepada" name="dikeluarkan_kepada" class="form-control form-control-sm" required>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="dikeluarkan_kepada">Dikeluarkan Kepada</label>
-            <input type="text" id="dikeluarkan_kepada" name="dikeluarkan_kepada" class="form-control" required>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="angkatan_semester">Angkatan/Semester</label>
+                <input type="text" id="angkatan_semester" name="angkatan_semester" class="form-control form-control-sm" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="jurusan">Jurusan</label>
+                <input type="text" id="jurusan" name="jurusan" class="form-control form-control-sm" required>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="angkatan_semester">Angkatan/Semester</label>
-            <input type="text" id="angkatan_semester" name="angkatan_semester" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="jurusan">Jurusan</label>
-            <input type="text" id="jurusan" name="jurusan" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="jumlah_uang">Jumlah Uang</label>
-            <input type="number" step="0.01" id="jumlah_uang" name="jumlah_uang" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="untuk_pembayaran">Untuk Pembayaran</label>
-            <input type="text" id="untuk_pembayaran" name="untuk_pembayaran" class="form-control" required>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="jumlah_uang">Jumlah Uang</label>
+                <input type="number" step="0.01" id="jumlah_uang" name="jumlah_uang" class="form-control form-control-sm" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="untuk_pembayaran">Untuk Pembayaran</label>
+                <input type="text" id="untuk_pembayaran" name="untuk_pembayaran" class="form-control form-control-sm" required>
+            </div>
         </div>
         <div class="form-group">
             <label for="perincian">Perincian</label>
-            <textarea id="perincian" name="perincian" class="form-control" required></textarea>
+            <textarea id="perincian" name="perincian" class="form-control form-control-sm" rows="3" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+    </div>
+</form>
         </div>
 
         <!-- History Pengeluaran -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">History Pengeluaran</h3>
+        <h3 class="card-title">History Kwitansi Pengeluaran</h3>
     </div>
     <div class="card-body p-0">
         <table class="table table-striped">
@@ -209,28 +216,21 @@
                     <th>Jumlah Uang</th>
                     <th>Untuk Pembayaran</th>
                     <th>Perincian</th>
-                    <th>Aksi</th>
+                    <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kwitansiPengeluaran as $index => $kwitansi)
+                @foreach ($kwitansiPengeluaran as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $kwitansi->nomor }}</td>
-                        <td>{{ $kwitansi->dikeluarkan_kepada }}</td>
-                        <td>{{ $kwitansi->angkatan_semester }}</td>
-                        <td>{{ $kwitansi->jurusan }}</td>
-                        <td>{{ $kwitansi->jumlah_uang }}</td>
-                        <td>{{ $kwitansi->untuk_pembayaran }}</td>
-                        <td>{{ $kwitansi->perincian }}</td>
-                        <td>
-                            <a href="{{ route('kwitansi-pengeluaran.edit', $kwitansi->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ route('kwitansi-pengeluaran.destroy', $kwitansi->id) }}" method="post" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
-                        </td>
+                        <td>{{ $item->nomor }}</td>
+                        <td>{{ $item->dikeluarkan_kepada }}</td>
+                        <td>{{ $item->angkatan_semester }}</td>
+                        <td>{{ $item->jurusan }}</td>
+                        <td>{{ $item->jumlah_uang }}</td>
+                        <td>{{ $item->untuk_pembayaran }}</td>
+                        <td>{{ $item->perincian }}</td>
+                        <td>{{ $item->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>

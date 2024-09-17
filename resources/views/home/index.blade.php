@@ -26,7 +26,7 @@
         <a href="{{ route('home.index') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">About</a>
       </li>
     </ul>
 
@@ -125,6 +125,8 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+          </li>
+
           </ul>
       </nav>
       <!-- /.sidebar-menu -->

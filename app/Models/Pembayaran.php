@@ -18,7 +18,6 @@ class Pembayaran extends Model
         'angkatan',
         'cara_bayar',
     ];
-
-    protected $table = 'pembayarans';
+    
 }
 

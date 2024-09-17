@@ -159,41 +159,49 @@
             <h3 class="card-title">Form Print Kwitansi</h3>
           </div>
           <form action="{{ route('proses-pemasukan') }}" method="post">
-            @csrf
-            <div class="card-body">
-              <div class="form-group">
+    @csrf
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="nomor">Nomor</label>
                 <input type="text" id="nomor" name="nomor" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="diterima_dari">Diterima Dari</label>
                 <input type="text" id="diterima_dari" name="diterima_dari" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="angkatan_semester">Angkatan/Semester</label>
                 <input type="text" id="angkatan_semester" name="angkatan_semester" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="jurusan">Jurusan</label>
                 <input type="text" id="jurusan" name="jurusan" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="jumlah_uang">Jumlah Uang</label>
                 <input type="number" step="0.01" id="jumlah_uang" name="jumlah_uang" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="untuk_pembayaran">Untuk Pembayaran</label>
                 <input type="text" id="untuk_pembayaran" name="untuk_pembayaran" class="form-control" required>
-              </div>
-              <div class="form-group">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
                 <label for="perincian">Perincian</label>
                 <input type="text" id="perincian" name="perincian" class="form-control" required>
-              </div>
             </div>
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
         </div>
 
         <!-- History Kwitansi -->

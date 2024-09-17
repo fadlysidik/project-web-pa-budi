@@ -132,43 +132,53 @@
       <section class="content">
         <div class="container-fluid">
           <!-- Form Pengeluaran -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Form Pengeluaran</h3>
-            </div>
-            <form action="{{ route('proses-pengeluaran') }}" method="post">
-              @csrf
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="no">No</label>
-                  <input type="text" id="no" name="no" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="tanggal">Tanggal</label>
-                  <input type="date" id="tanggal" name="tanggal" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="uraian">Uraian</label>
-                  <input type="text" id="uraian" name="uraian" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="rincian">Rincian</label>
-                  <textarea id="rincian" name="rincian" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="kode_akun">Kode Akun</label>
-                  <input type="text" id="kode_akun" name="kode_akun" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="pengeluaran">Pengeluaran</label>
-                  <input type="number" step="0.01" id="pengeluaran" name="pengeluaran" class="form-control" required>
-                </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Form Pengeluaran</h3>
+  </div>
+  <form action="{{ route('proses-pengeluaran') }}" method="post">
+    @csrf
+    <div class="card-body">
+      <div class="row">
+        <!-- Kolom pertama -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="no">No</label>
+            <input type="number" id="no" name="no" class="form-control" required>
           </div>
+          <div class="form-group">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="uraian">Uraian</label>
+            <input type="text" id="uraian" name="uraian" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- Kolom kedua -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="rincian">Rincian</label>
+            <textarea id="rincian" name="rincian" class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="kode_akun">Kode Akun</label>
+            <input type="text" id="kode_akun" name="kode_akun" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="pengeluaran">Pengeluaran</label>
+            <input type="number" step="0.01" id="pengeluaran" name="pengeluaran" class="form-control" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
 
           <!-- History Pengeluaran -->
           <div class="card">

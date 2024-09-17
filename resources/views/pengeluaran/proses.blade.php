@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "project_pabudi");
+$conn = new mysqli("localhost", "root", "", "project_unsur");
 
 // Memeriksa koneksi
 if ($conn->connect_error) {

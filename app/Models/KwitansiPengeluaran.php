@@ -9,8 +9,8 @@ class KwitansiPengeluaran extends Model
 {
     use HasFactory;
     
-    protected $table = 'kwitansi_pengeluaran'; // Pastikan nama tabel benar
-
+    protected $table = 'kwitansi_pengeluaran';
+    
     protected $fillable = [
         'nomor',
         'dikeluarkan_kepada',

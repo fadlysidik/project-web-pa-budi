@@ -23,8 +23,8 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="{{ route('login') }}" method="post">
-        @csrf
+      <form method="POST" action="{{ route('login.process') }}">
+    @csrf
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email" required>
           <div class="input-group-append">
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="col-4">
-    <a href="{{ url('home') }}" class="btn btn-primary btn-block">Sign In</a>
+    <a href="{{ route('home.index')}}" class="btn btn-primary btn-block">Sign In</a>
 </div>
 
         </div>

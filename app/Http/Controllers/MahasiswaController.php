@@ -73,11 +73,19 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mahasiswa $mahasiswa)
+    public function edit($id)
     {
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        // Ambil data mahasiswa berdasarkan ID
+        $mahasiswa = Mahasiswa::find($id);
+        
+        // Jika data tidak ditemukan
+        if (!$mahasiswa) {
+            return redirect()->route('list-mahasiswa')->with('error', 'Data mahasiswa tidak ditemukan');
+        }
+        
+        // Return view untuk edit data mahasiswa
+        return view('mahasiswa.index', compact('mahasiswa'));
     }
-
     /**
      * Update the specified resource in storage.
      *

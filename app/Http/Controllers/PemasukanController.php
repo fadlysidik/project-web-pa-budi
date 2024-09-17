@@ -7,10 +7,15 @@ use App\Models\Pembayaran; // Pastikan model diimpor
 
 class PemasukanController extends Controller
 {
-    public function prosesPemasukan(Request $request)
+    public function showForm()
     {
-        // Validasi data
-        $validatedData = $request->validate([
+        $pemasukan = Pembayaran::all();
+        return view('pemasukan.index', compact('pemasukan'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
             'tanggal' => 'required|date',
             'nama_mahasiswa' => 'required|string|max:100',
             'jumlah_uang' => 'required|numeric',
@@ -20,18 +25,8 @@ class PemasukanController extends Controller
             'cara_bayar' => 'required|string|max:50',
         ]);
 
-        // Simpan data ke database
-        Pembayaran::create($validatedData);
+        Pembayaran::create($request->all());
 
-        // Redirect ke halaman form dengan pesan sukses
-        return redirect()->route('form-pemasukan')->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('form-pemasukan')->with('success', 'Data berhasil disimpan');
     }
-
-    public function showForm()
-    {
-        $pembayaran = Pembayaran::all();
-        return view('pemasukan.index', ['pembayaran' => $pembayaran]);
-    }
-
-    
 }

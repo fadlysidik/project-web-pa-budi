@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "project_pabudi");
+$conn = new mysqli("localhost", "root", "", "project_unsur");
 
 // Check connection
 if ($conn->connect_error) {
@@ -17,8 +17,8 @@ $angkatan = $_POST['angkatan'];
 $cara_bayar = $_POST['cara_bayar'];
 
 // Insert data into the database
-$sql = "INSERT INTO pembayaran (tanggal, nama_mahasiswa, jumlah_uang, peruntukan, semester, angkatan, cara_bayar) 
-        VALUES ('$tanggal', '$nama_mahasiswa', '$jumlah_uang', '$peruntukan', '$semester', '$angkatan', '$cara_bayar')";
+$sql = "INSERT INTO pembayaran (id, tanggal, nama_mahasiswa, jumlah_uang, peruntukan, semester, angkatan, cara_bayar) 
+        VALUES ('$id', '$tanggal', '$nama_mahasiswa', '$jumlah_uang', '$peruntukan', '$semester', '$angkatan', '$cara_bayar')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
