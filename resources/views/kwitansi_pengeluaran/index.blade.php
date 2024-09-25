@@ -155,7 +155,7 @@
           <div class="card-header">
             <h3 class="card-title">Form Print Kwitansi pengeluaran</h3>
           </div>
-          <form action="{{ route('proses-pengeluaran') }}" method="post">
+          <form action="{{ route('kwitansi-pengeluaran.store') }}" method="post">
     @csrf
     <div class="card-body">
         <div class="form-row">

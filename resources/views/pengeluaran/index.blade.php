@@ -136,7 +136,7 @@
   <div class="card-header">
     <h3 class="card-title">Form Pengeluaran</h3>
   </div>
-  <form action="{{ route('proses-pengeluaran') }}" method="post">
+  <form action="{{ route('form-pengeluaran') }}" method="post">
     @csrf
     <div class="card-body">
       <div class="row">
