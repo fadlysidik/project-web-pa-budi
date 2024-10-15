@@ -16,6 +16,6 @@ class Pengeluaran extends Model
         'uraian',
         'rincian',
         'kode_akun',
-        'pengeluaran',
+        'pengeluaran'
     ];
 }

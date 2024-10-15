@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->string('nama_mahasiswa');
-            $table->decimal('jumlah_uang', 10, 2);
+            $table->decimal('jumlah_uang', 15, 2);
             $table->string('peruntukan');
             $table->integer('semester');
             $table->integer('angkatan');

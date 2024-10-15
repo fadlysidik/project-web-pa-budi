@@ -10,11 +10,10 @@ class KwitansiPengeluaranController extends Controller
     public function index()
     {
         $kwitansiPengeluaran = KwitansiPengeluaran::all();
-        return view('kwitansi_pengeluaran.index', compact('kwitansiPengeluaran'));
-
+        return view('kwitansi-pengeluaran.index', compact('kwitansiPengeluaran'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $request->validate([
             'nomor' => 'required',
@@ -26,7 +25,6 @@ class KwitansiPengeluaranController extends Controller
             'perincian' => 'required',
         ]);
 
-
         KwitansiPengeluaran::create([
             'nomor' => $request->nomor,
             'dikeluarkan_kepada' => $request->dikeluarkan_kepada,
@@ -37,7 +35,6 @@ class KwitansiPengeluaranController extends Controller
             'perincian' => $request->perincian,
         ]);
 
-        return redirect()->route('print-kwitansi-pengeluaran')->with('success', 'Kwitansi berhasil dicetak.');
-
+        return redirect()->route('kwitansi-pengeluaran.index')->with('success', 'Kwitansi berhasil dicetak.');
     }
 }

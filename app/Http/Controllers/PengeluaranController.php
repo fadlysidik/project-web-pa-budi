@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pengeluaran; // Pastikan ini sesuai dengan namespace model
+use App\Models\Pengeluaran;
 
 class PengeluaranController extends Controller
 {
@@ -15,17 +15,20 @@ class PengeluaranController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
             'no' => 'required|string',
             'tanggal' => 'required|date',
             'uraian' => 'required|string',
             'rincian' => 'required|string',
             'kode_akun' => 'required|string',
-            'pengeluaran' => 'required|numeric',
+            'pengeluaran' => 'required|numeric|min:0',
         ]);
 
+        // Simpan data pengeluaran
         Pengeluaran::create($request->all());
 
-        return redirect()->route('form-pengeluaran')->with('success', 'Data berhasil disimpan');
+        // Set session flash untuk pesan berhasil
+        return redirect()->route('form-pengeluaran')->with('success', 'Pengeluaran berhasil disimpan');
     }
 }

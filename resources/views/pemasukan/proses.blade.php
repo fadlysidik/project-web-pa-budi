@@ -1,33 +1,32 @@
 <?php
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "project_unsur");
+// $conn = new mysqli("localhost", "root", "", "project_unsur");
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
 // Retrieve form data
-$peruntukan = $_POST['peruntukan'];
-$tanggal = $_POST['tanggal'];
-$nama_mahasiswa = $_POST['nama_mahasiswa'];
-$jumlah_uang = $_POST['jumlah_uang'];
-$semester = $_POST['semester'];
-$angkatan = $_POST['angkatan'];
-$cara_bayar = $_POST['cara_bayar'];
+// $peruntukan = $_POST['peruntukan'];
+// $tanggal = $_POST['tanggal'];
+// $nama_mahasiswa = $_POST['nama_mahasiswa'];
+// $jumlah_uang = $_POST['jumlah_uang'];
+// $semester = $_POST['semester'];
+// $angkatan = $_POST['angkatan'];
+// $cara_bayar = $_POST['cara_bayar'];
 
 // Insert data into the database
-$sql = "INSERT INTO pembayaran (id, tanggal, nama_mahasiswa, jumlah_uang, peruntukan, semester, angkatan, cara_bayar) 
-        VALUES ('$id', '$tanggal', '$nama_mahasiswa', '$jumlah_uang', '$peruntukan', '$semester', '$angkatan', '$cara_bayar')";
+// $sql = "INSERT INTO pembayaran (id, tanggal, nama_mahasiswa, jumlah_uang, peruntukan, semester, angkatan, cara_bayar) 
+//         VALUES ('$id', '$tanggal', '$nama_mahasiswa', '$jumlah_uang', '$peruntukan', '$semester', '$angkatan', '$cara_bayar')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+// if ($conn->query($sql) === TRUE) {
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+// }
 
-$conn->close();
+// $conn->close();
 
-header("Location: index.php");
-exit();
-?>
+// header("Location: index.php");
+// exit();

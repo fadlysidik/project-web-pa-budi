@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengeluaranController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\KwitansiPengeluaranController;
+use App\Http\Controllers\KwitansiPemasukanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +28,14 @@ use App\Http\Controllers\KwitansiPengeluaranController;
 |
 */
 
-// Rute untuk halaman utama
 Route::get('/', function () {
-    return view('auth.welcome');
-})->name('welcome');
+    return view('auth.login');
+})->name('login');
 
-// Rute untuk login
 Route::get('/login', function () {
-    return view('home.index');
-})->name('home');
+    return view('auth.login');
+})->name('login');
 
-// Rute untuk memproses data login
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 
 // Rute untuk register
@@ -48,7 +47,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 // PEMASUKAN
 Route::get('/form-pemasukan', [PemasukanController::class, 'showForm'])->name('form-pemasukan');
-Route::post('/proses-pemasukan', [PemasukanController::class, 'prosesPemasukan'])->name('proses-pemasukan');
+Route::post('/proses-pemasukan', [PemasukanController::class, 'store'])->name('proses-pemasukan');
 
 // PENGELUARAN
 Route::get('/form-pengeluaran', [PengeluaranController::class, 'showForm'])->name('form-pengeluaran');
@@ -63,14 +62,15 @@ Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('proses-i
 Route::get('mahasiswa/{id}/edit', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
 
 // PRINT KWITANSI PEMASUKAN
-Route::get('/kwiansi_pemasukan', [KwitansiController::class, 'index'])->name('print-kwitansi-pemasukan');
-Route::post('/proses-pemasukan', [KwitansiController::class, 'store'])->name('proses-pemasukan');
+Route::get('/kwitansi-pemasukan', [KwitansiPemasukanController::class, 'index'])->name('kwitansi-pemasukan.index');
+Route::post('/kwitansi-pemasukan', [KwitansiPemasukanController::class, 'store'])->name('kwitansi-pemasukan.store');
 
 // PRINT KWITANSI PENGELUARAN
-
 Route::get('/kwitansi-pengeluaran', [KwitansiPengeluaranController::class, 'index'])->name('kwitansi-pengeluaran.index');
-Route::post('/proses-pengeluaran', [KwitansiPengeluaranController::class, 'store'])->name('kwitansi-pengeluaran.store');
+Route::post('/kwitansi-pengeluaran', [KwitansiPengeluaranController::class, 'store'])->name('kwitansi-pengeluaran.store');
 
+// Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // Rute untuk logout
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

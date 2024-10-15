@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kwitansi;
+use App\Models\KwitansiPemasukan;
 use Illuminate\Http\Request;
 
-class KwitansiController extends Controller
+class KwitansiPemasukanController extends Controller
 {
     public function index()
     {
-        $kwitansi = Kwitansi::all();
-        return view('kwitansi_pemasukan.index', compact('kwitansi'));
+        $kwitansiPemasukan = KwitansiPemasukan::all();
+        return view('kwitansi-pemasukan.index', compact('kwitansiPemasukan'));
     }
 
     public function store(Request $request)
@@ -25,7 +25,7 @@ class KwitansiController extends Controller
             'perincian' => 'required',
         ]);
 
-        Kwitansi::create([
+        KwitansiPemasukan::create([
             'nomor' => $request->nomor,
             'diterima_dari' => $request->diterima_dari,
             'angkatan_semester' => $request->angkatan_semester,
@@ -35,6 +35,6 @@ class KwitansiController extends Controller
             'perincian' => $request->perincian,
         ]);
 
-        return redirect()->route('print-kwitansi-pemasukan')->with('success', 'Kwitansi berhasil dicetak.');
+        return redirect()->route('kwitansi-pemasukan.index')->with('success', 'Kwitansi berhasil dicetak.');
     }
 }

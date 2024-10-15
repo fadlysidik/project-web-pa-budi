@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-
 class AuthController extends Controller
 {
-    // Method untuk menangani proses login
     public function login(Request $request)
     {
         // Validasi input dari form login
@@ -21,14 +19,14 @@ class AuthController extends Controller
         // Cek kredensial pengguna
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->remember)) { // Tambahkan remember me
             // Jika berhasil login, redirect ke halaman home
             return redirect()->route('home.index');
         } else {
             // Jika gagal login, kembali ke halaman login dengan pesan error
             return redirect()->route('login')->withErrors([
                 'email' => 'Email atau password salah.',
-            ]);
+            ])->withInput($request->only('email'));
         }
     }
 
